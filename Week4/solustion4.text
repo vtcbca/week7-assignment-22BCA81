@@ -1,0 +1,28 @@
+Create salary.csv file which contain sid,sname,salary.
+Display the employee record whose name begins from "S? also show no. of employee with first letter "S? out of total record.
+#a create employee record
+employee_records
+    [1,'om','15000']
+    [2,'sai','20000']
+    [3,'ram','45000']
+    [4,'krishna','50000']
+    [5,'heni','10000']
+
+# Write records to the CSV file
+with open('salary.csv', 'w') as file:
+    file.write("sid,sname,salary\n")
+    for record in employee_records:
+        file.write(",".join(map(str, record)) + "\n")
+        
+# Filter and count employees with names starting with 'S'
+s_names = [line.strip().split(',')[1] for line in lines if line.startswith('S')]
+total_names = len(lines)
+s_count = len(s_names)
+
+# Display employee records and the count
+for line in lines:
+    sid, sname, salary = line.strip().split(',')
+    if sname.startswith('S'):
+        print(f"{sid},{sname},{salary}")
+        
+print(f"Number of 'S' names are {s_count}/{total_names}")
