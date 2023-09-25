@@ -1,0 +1,38 @@
+1. Create a table of student and student details.
+Ans:-	create table stud04
+	(
+		id text primary key,
+		name text
+	);
+
+	create table stud_detail04
+	(
+		id text not null,
+		city text,	
+		m_no number,
+		foreign key(id) references stud04(id)
+	);
+
+2. Insert minimum 5 records in each table.
+Ans:    insert into stud04
+	values('22BCA01','JAI'),('22BCA02','SHREE'),('22BCA03','RAM'),('22BCA04','OM'),('22BCA05','SAI');
+	
+	insert into stud_detail04
+	values('22BCA01','SURAT',1234567890),('22BCA02','BARDOLI',9876543210),('22BCA03','SARBHON',4567891230),('22BCA04','BARDOLI',7894561320),('22BCA05','SURAT',1564789230);
+
+3. Display student details who come from the surat city.
+Ans:    select s.id,s.name,sd.city,sd.m_no
+   	from stud04 s join stud_detail04 sd
+    	on s.id=sd.id
+    	where city='surat';
+
+4. Display student details who come the city which is started with B.
+Ans:-   select s.id,s.name,sd.city,sd.m_no
+    	from stud04 s join stud_detail04 sd
+    	on s.id=sd.id
+   	where sd.city like 'B%';
+
+5. Update mobile_number who are coming from 'surat'.
+Ans:-   update stud_detail04 set m_no=5555555555 
+	where city='SURAT';
+	
